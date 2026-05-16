@@ -16,7 +16,12 @@ public:
 	std::string to_string() const {
 		return city + ", " + street + ", " + std::to_string(house) + ", " + std::to_string(apartment);
 	}
+	std::string get_сity() const {
+		return city;
+	}
 };
+
+void sort(addresses* array, int a);
 
 int main() {
 	std::ifstream file("in.txt");
@@ -36,13 +41,28 @@ int main() {
 
 			array[i] = addresses(city, street, std::stoi(house), std::stoi(apartment));
 		}
+
+		sort(array, n);
+
 		outFile << n << std::endl;
-		for (int i = n - 1; i >= 0; i--) {
+		for (int i = 0; i < n; i++) {
 			outFile << array[i].to_string() << std::endl;
 		}
 
 		delete[] array;
 
 		return 0;
+	}
+}
+void sort(addresses* array, int n) {
+	for (int i = 0; i < n - 1; i++) {
+		for (int j = 0; j < n - i - 1; j++) {
+			if (array[j].get_сity() > array[j + 1].get_сity()) {
+				addresses temp = array[j];
+				array[j] = array[j + 1];
+				array[j + 1] = temp;
+
+			}
+		}
 	}
 }
