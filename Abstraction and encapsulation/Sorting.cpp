@@ -41,6 +41,7 @@ int main() {
 
 			array[i] = addresses(city, street, std::stoi(house), std::stoi(apartment));
 		}
+		file.close();
 
 		sort(array, n);
 
@@ -48,6 +49,7 @@ int main() {
 		for (int i = 0; i < n; i++) {
 			outFile << array[i].to_string() << std::endl;
 		}
+		outFile.close();
 
 		delete[] array;
 

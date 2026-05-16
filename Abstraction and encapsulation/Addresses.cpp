@@ -36,10 +36,13 @@ int main() {
 
 			array[i] = addresses(city, street, std::stoi(house), std::stoi(apartment));
 		}
+		file.close();
 		outFile << n << std::endl;
 		for (int i = n - 1; i >= 0; i--) {
 			outFile << array[i].to_string() << std::endl;
 		}
+
+		outFile.close();
 
 		delete[] array;
 
